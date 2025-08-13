@@ -1,0 +1,38 @@
+{
+  // A descriptive name for your development container configuration.
+  "name": ".NET Development Environment",
+
+  // Specifies the Docker image to use. This is the official image from Microsoft
+  // for .NET 9 development, which is the latest stable version as of late 2025.
+  // It comes with the SDK, runtime, and other tools pre-installed.
+  //
+  // NOTE: You can change the version tag as needed. For example:
+  // - For Long-Term Support (LTS): "[mcr.microsoft.com/devcontainers/dotnet:8.0](https://mcr.microsoft.com/devcontainers/dotnet:8.0)"
+  // - For experimental previews: "[mcr.microsoft.com/dotnet/sdk:10.0-preview](https://mcr.microsoft.com/dotnet/sdk:10.0-preview)" (or similar)
+  "image": "[mcr.microsoft.com/devcontainers/dotnet:9.0](https://mcr.microsoft.com/devcontainers/dotnet:9.0)",
+
+  // Features to add to the dev container.
+  "features": {
+    // This feature adds the latest version of the Git CLI.
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+
+  // --- VS Code Specific Customizations ---
+  "customizations": {
+    // Configure settings for VS Code when it connects to this codespace.
+    "vscode": {
+      // A list of extensions to automatically install.
+      "extensions": [
+        // This is the official, modern C# extension pack from Microsoft.
+        // It includes everything you need for C# development: language support,
+        // debugging, solution explorer, and unit testing.
+        "ms-dotnettools.csdevkit"
+      ]
+    }
+  },
+
+  // --- Post-Creation Commands ---
+  // A command to run after the codespace is created but before you connect.
+  // This is perfect for restoring NuGet packages automatically.
+  "postCreateCommand": "dotnet restore"
+}

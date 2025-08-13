@@ -9,7 +9,7 @@
   // NOTE: You can change the version tag as needed. For example:
   // - For Long-Term Support (LTS): "[mcr.microsoft.com/devcontainers/dotnet:8.0](https://mcr.microsoft.com/devcontainers/dotnet:8.0)"
   // - For experimental previews: "[mcr.microsoft.com/dotnet/sdk:10.0-preview](https://mcr.microsoft.com/dotnet/sdk:10.0-preview)" (or similar)
-  "image": "[mcr.microsoft.com/devcontainers/dotnet:9.0](https://mcr.microsoft.com/devcontainers/dotnet:9.0)",
+  "image": "[mcr.microsoft.com/devcontainers/dotnet:8.0](https://mcr.microsoft.com/devcontainers/dotnet:8.0)",
 
   // Features to add to the dev container.
   "features": {

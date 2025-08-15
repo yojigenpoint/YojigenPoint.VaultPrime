@@ -14,7 +14,7 @@ namespace YojigenPoint.VaultPrime.Extensions
         public static bool IsNew(this DateTime createdTime, int periodInDays = 2)
         {
             var diff = DateTime.UtcNow - createdTime;
-            return diff.TotalDays >= 0 && diff.TotalDays <= periodInDays;
+            return diff.TotalDays >= 0 && (int)diff.TotalDays <= periodInDays;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace YojigenPoint.VaultPrime.Extensions
         public static bool IsExpiringSoon(this DateTime expiryTime, int periodInDays = 7)
         {
             var diff = expiryTime - DateTime.UtcNow;
-            return diff.TotalDays > 0 && diff.TotalDays <= periodInDays;
+            return diff.TotalDays > 0 && (int)diff.TotalDays <= periodInDays;
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace YojigenPoint.VaultPrime.Extensions
         public bool IsNew(int periodInDays = 2)
         {
             var diff = DateTime.UtcNow - this;
-            return diff.TotalDays >= 0 && diff.TotalDays <= periodInDays;
+            return diff.TotalDays >= 0 && (int)diff.TotalDays <= periodInDays;
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace YojigenPoint.VaultPrime.Extensions
         public bool IsExpiringSoon(int periodInDays = 7)
         {
             var diff = this - DateTime.UtcNow;
-            return diff.TotalDays > 0 && diff.TotalDays <= periodInDays;
+            return diff.TotalDays > 0 && (int)diff.TotalDays <= periodInDays;
         }
 
         /// <summary>

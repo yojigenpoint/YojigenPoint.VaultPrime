@@ -39,4 +39,40 @@ namespace YojigenPoint.VaultPrime.Extensions
             return expiryTime <= DateTime.UtcNow;
         }
     }
+
+#if NET10_0 // Or the appropriate future .NET version tag
+    /// <summary>
+    /// EXPERIMENTAL: Provides extension methods for the DateTime struct using the
+    /// proposed "implicit extension" syntax.
+    /// </summary>
+    public implicit extension DateTimeExtensions for DateTime
+    {
+        /// <summary>
+        /// Determines if this DateTime is within a specified recent period.
+        /// </summary>
+        public bool IsNew(int periodInDays = 2)
+        {
+            var diff = DateTime.UtcNow - this;
+            return diff.TotalDays >= 0 && diff.TotalDays <= periodInDays;
+        }
+
+        /// <summary>
+        /// Determines if this DateTime is approaching.
+        /// </summary>
+        public bool IsExpiringSoon(int periodInDays = 7)
+        {
+            var diff = this - DateTime.UtcNow;
+            return diff.TotalDays > 0 && diff.TotalDays <= periodInDays;
+        }
+
+        /// <summary>
+        /// Determines if this DateTime is in the past.
+        /// </summary>
+        public bool IsExpired()
+        {
+            return this <= DateTime.UtcNow;
+        }
+    }
+
+#endif                                                                                                         
 }

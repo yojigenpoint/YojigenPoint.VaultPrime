@@ -28,4 +28,30 @@ namespace YojigenPoint.VaultPrime.Extensions
             return HttpUtility.ParseQueryString(uri.Query);
         }
     }
+
+#if NET10_0
+    /// <summary>
+    /// EXPERIMENTAL: Provides extension methods for the Uri class using
+    /// the proposed "implicit extension" syntax.
+    /// </summary>
+    
+    public implicit extension UriExtensions for Uri
+    {
+        /// <summary>
+        /// Gets the base URI without any query parameters.
+        /// </summary>
+        public Uri GetBaseUri()
+        {
+            return new UriBuilder(this) { Query = string.Empty }.Uri;
+        }
+
+        /// <summary>
+        /// Parse the query string of a Uri and returns it as a NameValueCollection.
+        /// </summary>
+        public NameValueCollection ParseQueryString()
+        {
+            return HttpUtility.ParseQueryString(this.Query);
+        }
+    }
+#endif
 }
